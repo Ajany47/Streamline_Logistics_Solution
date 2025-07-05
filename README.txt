@@ -65,3 +65,13 @@ Automated key performance metrics:
 - Speed ≠ Efficiency — Smart scheduling is better than express delivery 🚫🚀  
 - Automation saves time and boosts consistency 🔁  
 - Visual dashboards make insights easier to communicate 📊
+🔗 View the Project Summary Post  
+Check out the full project breakdown on LinkedIn:  
+👉 https://www.linkedin.com/in/olubunmi-adenekan-b231847a/  
+
+---
+##
+📫 Contact  
+Feel free to connect or share feedback!  
+GitHub: [Ajany47](https://github.com/Ajany47)  
+LinkedIn: [Olubunmi Adenekan](https://www.linkedin.com/in/olubunmi-adenekan-b231847a/)  
