@@ -1,0 +1,43 @@
+function main(workbook: ExcelScript.Workbook) {
+	let sheet1 = workbook.getWorksheet("Sheet1");
+	// Rename worksheet to "KPIAutomation"
+	sheet1.setName("KPIAutomation");
+	let selectedSheet = workbook.getActiveWorksheet();
+	// Set range B13:C14 on selectedSheet
+	selectedSheet.getRange("B13:C14").setFormulas([["1 Order Completion Rate",null],["Total Order","=COUNT('Delivery data (2)'!A:A)"]]);
+	// Auto fit the columns of range B:B on selectedSheet
+	selectedSheet.getRange("B:B").getFormat().autofitColumns();
+	// Set range B15:C16 on selectedSheet
+	selectedSheet.getRange("B15:C16").setFormulas([["On-Time Delivery ","= COUNTIF('Delivery data (2)'!P:P,\"=0\")"],["Percentage Of On-Time Delivery",null]]);
+	// Auto fit the columns of range B:B on selectedSheet
+	selectedSheet.getRange("B:B").getFormat().autofitColumns();
+	// Set range C16 on selectedSheet
+	selectedSheet.getRange("C16").setFormula("=C15/C14");
+	// Apply cell style on range C16 on selectedSheet
+	selectedSheet.getRange("C16").setPredefinedCellStyle("Percent");
+	// Set range B19 on selectedSheet
+	selectedSheet.getRange("B19").setValue("2. Average Time Taken Per Delivery");
+	// Auto fit the columns of range B:B on selectedSheet
+	selectedSheet.getRange("B:B").getFormat().autofitColumns();
+	// Set range C19 on selectedSheet
+	selectedSheet.getRange("C19").setFormula("=AVERAGE('Delivery data (2)'!O:O)");
+	// Set range B23:C25 on selectedSheet
+	selectedSheet.getRange("B23:C25").setFormulas([["3. Delay Impact ",null],["Average Delay Time ","=AVERAGE('Delivery data (2)'!P:P)"],["Percentage of Delayed Orders","=COUNTIF('Delivery data (2)'!K:K, \"In Progress\")/COUNT('Delivery data (2)'!A:A)"]]);
+	// Apply cell style on range C25 on selectedSheet
+	selectedSheet.getRange("C25").setPredefinedCellStyle("Percent");
+	// Set range B28:C28 on selectedSheet
+	selectedSheet.getRange("B28:C28").setFormulas([["4. Customer Satisfaction Score ","=COUNTIF('Delivery data (2)'!R:R, \"Positive\")/COUNTA('Delivery data (2)'!R:R)"]]);
+	// Apply cell style on range C28 on selectedSheet
+	selectedSheet.getRange("C28").setPredefinedCellStyle("Percent");
+	// Set range B32:C32 on selectedSheet
+	selectedSheet.getRange("B32:C32").setFormulas([["5. Backlog Rate","=COUNTIF('Delivery data (2)'!K:K,\"In Progress\")/COUNT('Delivery data (2)'!A:A)"]]);
+	// Apply cell style on range C32 on selectedSheet
+	selectedSheet.getRange("C32").setPredefinedCellStyle("Percent");
+	// Set range B35:E36 on selectedSheet
+	selectedSheet.getRange("B35:E36").setFormulas([["6. Resource Allocation","Zone 1","Zone 2","Zone 3"],[null,"=COUNTIF('Delivery data (2)'!T:T,\"Zone1\")","=COUNTIF('Delivery data (2)'!T:T,\"Zone2\")","=COUNTIF('Delivery data (2)'!T:T,\"Zone3\")"]]);
+	let customer_satisfaction_Dashboard = workbook.getWorksheet("Customer satisfaction Dashboard");
+	// Set range D23 on customer_satisfaction_Dashboard
+	customer_satisfaction_Dashboard.getRange("D23").setValue("");
+	// Clear ExcelScript.ClearApplyTo.contents from range B38:C38 on selectedSheet
+	selectedSheet.getRange("B38:C38").clear(ExcelScript.ClearApplyTo.contents);
+}
